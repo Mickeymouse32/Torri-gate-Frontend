@@ -17,6 +17,8 @@ const Home = lazy(() => import("./pages/Home"));
 const HomeLoggedIn = lazy(() => import("./pages/HomeLoggedIn"));
 const PropertyDetail = lazy(() => import("./pages/PropertyDetail"));
 const Error404 = lazy(() => import("./pages/Error404"));
+const Verification = lazy(()=> import('./pages/Verification'))
+import VerifyEmail from "./pages/Verifyemail";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
           <Route path="/property/:propertyId" element={<PropertyDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/verification" element={<Verification />} />
+          <Route path="/verify-Email/:token" element={<VerifyEmail />} />
 
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<Dashboard />} />
