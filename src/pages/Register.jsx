@@ -82,7 +82,7 @@ const Register = () => {
             type="button"
             onClick={() => setRole("landlord")}
             className={
-              role === "owner"
+              role === "landlord"
                 ? "bg-[#0c0c0c] text-white rounded-lg  px-2 py-1"
                 : "text-[#666] bg-transparent cursor-pointer"
             }
