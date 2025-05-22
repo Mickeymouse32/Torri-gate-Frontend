@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
+import { useAppContext } from "../hooks/useAppContext";
 const phone_regex = /^\+234[789][01]\d{8}$/;
 
 const validationSchema = yup.object().shape({
@@ -32,6 +33,7 @@ const Profile = () => {
     resolver: yupResolver(validationSchema),
   });
   const [isEditable, setIsEditable] = useState(false);
+  const {user} = useAppContext()
 
   const handleClick = () => {
     setIsEditable(true);
@@ -61,12 +63,12 @@ const Profile = () => {
         >
           <div className="lg:flex-row flex justify-between flex-col ">
             <img
-              src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVyc29ufGVufDB8fDB8fHww"
-              alt="girl picture"
+              src={user.profilePicture}
+              alt="profile picture"
               className="h-[140px] w-[142px] rounded-full object-cover"
             />
             <div className="flex flex-col justify-between  ">
-              <h1></h1>
+              
               {!isEditable && (
                 <button
                   type="button"
@@ -84,7 +86,7 @@ const Profile = () => {
             </label>
             <input
               type="text"
-              placeholder="Farid Ahmed"
+              placeholder={user.fullName}
               className={`bg-[#fbfbfb] w-full h-[45px] text-black px-2 outline-0  ${
                 errors.fullName ? "border border-red-500" : ""
               }`}
@@ -102,7 +104,7 @@ const Profile = () => {
             </label>
             <input
               type="email"
-              placeholder="olafarid12@gmail.com"
+              placeholder={user.email}
               className={`bg-[#fbfbfb] w-full h-[45px]  text-black px-2 outline-0 ${
                 errors.email ? "border border-red-500" : ""
               }`}
@@ -120,7 +122,7 @@ const Profile = () => {
             </label>
             <input
               type="tel"
-              placeholder="+234 902 573 0919"
+              placeholder={user.phoneNumber}
               className={`bg-[#fbfbfb] w-full h-[45px]  text-black px-2 outline-0 ${
                 errors.tel1 ? "border border-red-500" : ""
               }`}
