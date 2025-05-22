@@ -13,7 +13,7 @@ import { useAppContext } from "../hooks/useAppContext";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [role, setRole] = useState("Tenant");
+  const [role, setRole] = useState("tenant");
   const [isSubmitting, setisSubmitting] = useState(false);
   const redirect = useNavigate();
   const { login } = useAppContext();
